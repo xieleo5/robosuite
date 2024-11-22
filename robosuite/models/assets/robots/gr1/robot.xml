@@ -11,6 +11,7 @@
 	</default>
 	<asset>
 		<material name="LightGrey" specular="0.9" shininess="0.9" rgba="0.4 0.4 0.4 1.0" />
+		<material name="LightGreyTrans" specular="0.9" shininess="0.9" rgba="0.4 0.4 0.4 1.0" />
 		<material name="Purple" specular="0.9" shininess="0.9" rgba="0.58 0.42 0.58 1.0" />
 		<material name="Black" specular="0.9" shininess="0.9" rgba="0.1 0.1 0.1 1.0" />
 		<texture type="skybox" builtin="gradient" rgb1=".3 .5 .7" rgb2="0 0 0" width="32" height="512" />
@@ -61,42 +62,42 @@
 			<body name="whole_body">
 				<site name="pelvis" pos="0 0 0" size="0.06 0.06 0.06" rgba="1 0 0 0" type="sphere" group="1" />
 				<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="Purple" mesh="base" />
-				<geom size="0.04 0.04 0.04" pos="0 0 -0.06" type="box" material="LightGrey" />
+				<geom size="0.04 0.04 0.04" pos="0 0 -0.06" type="box" material="LightGreyTrans" />
 				<camera mode="fixed" name="overshoulder" pos="0.15 0.0 0.6" xyaxes="0.00 -1.000 0.000 0.9 0.00 0.6" />
 				<camera mode="fixed" name="behindhead" pos="-0.1 0.0 0.9" xyaxes="0.00 -1.000 0.000 0.9 0.00 0.6" />
 				<body name="torso_waist_yaw" pos="0 0 0.0065">
 					<site name="waist" pos="0 0 0" size="0.06 0.06 0.06" rgba="1 0 0 0" type="sphere" group="1" />
 					<inertial pos="-0.010388 -0.00169636 0.0224709" quat="8.03475e-05 0.752953 -6.91813e-06 0.658075" mass="0.37886" diaginertia="0.000387148 0.000354992 0.000193448" />
 					<joint name="torso_waist_yaw" pos="0 0 0" axis="0.0 0.0 1.0" range="-1.05 1.05" />
-					<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGrey" mesh="torso_waist_yaw" />
+					<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGreyTrans" mesh="torso_waist_yaw" />
 					<body name="torso_waist_pitch" pos="0 0 0.055">
 						<inertial pos="0.00229173 -0.00229364 0.0425378" quat="0.998452 -0.0194486 0.0162447 0.0495079" mass="4.40328" diaginertia="0.00487449 0.00487146 0.00355351" />
 						<joint name="torso_waist_pitch" pos="0 0 0" axis="0.0 1.0 0.0" range="-0.52 1.22" />
-						<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGrey" mesh="torso_waist_pitch" />
-						<geom size="0.04 0.04 0.06" type="box" material="LightGrey" />
+						<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGreyTrans" mesh="torso_waist_pitch" />
+						<geom size="0.04 0.04 0.06" type="box" material="LightGreyTrans" />
 						<body name="torso_waist_roll" pos="0 0 0.085">
 							<site name="chest" pos="0 0 0.2" size="0.06 0.06 0.06" rgba="1 0 0 0" type="sphere" group="1" />
 							<inertial pos="-0.00982804 -1.2954e-05 0.160653" quat="0.999997 1.84368e-05 -0.00260593 -4.00255e-05" mass="7.34393" diaginertia="0.0305266 0.0217567 0.0136783" />
 							<joint name="torso_waist_roll" pos="0 0 0" axis="1.0 0.0 0.0" range="-0.7 0.7" />
-							<geom pos="0 0 0.15" type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGrey" mesh="torso_waist_roll" />
-							<geom size="0.09 0.09 0.09" pos="0 0 0.15" type="box" material="LightGrey" />
+							<geom pos="0 0 0.15" type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGreyTrans" mesh="torso_waist_roll" />
+							<geom size="0.09 0.09 0.09" pos="0 0 0.15" type="box" material="LightGreyTrans" />
 							<body name="head_yaw" pos="0.001 -0.00022551 0.295">
 								<site name="neck" pos="0 0 0" size="0.03 0.03 0.03" rgba="1 0 0 0" type="sphere" group="1" />
 								<inertial pos="0.000255273 -1.43143e-05 0.0571737" quat="0.698659 0.111628 0.112302 0.697713" mass="0.168425" diaginertia="0.00013241 0.000126266 6.86988e-05" />
 								<joint name="head_yaw" pos="0 0 0" axis="0.0 0.0 1.0" range="-1.5707963267948966 1.5707963267948966" />
-								<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGrey" mesh="head_yaw" />
-								<geom size="0.02 0.02 0.02" pos="0 0 -0.03" type="box" material="LightGrey" />
+								<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGreyTrans" mesh="head_yaw" />
+								<geom size="0.02 0.02 0.02" pos="0 0 -0.03" type="box" material="LightGreyTrans" />
 								<body name="head_roll" pos="0 0 0">
 									<inertial pos="-0.000539717 0.00299723 -0.00194711" quat="0.498775 0.509039 0.50481 0.487104" mass="0.0189574" diaginertia="5.66154e-06 3.71917e-06 3.07146e-06" />
 									<joint name="head_roll" pos="0 0 0" axis="1.0 0.0 0.0" range="-0.2617993877991494 0.2617993877991494" />
-									<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGrey" mesh="head_roll" />
-									<geom size="0.02 0.02 0.02" pos="0 0 -0.1" type="box" material="LightGrey" />
+									<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="LightGreyTrans" mesh="head_roll" />
+									<geom size="0.02 0.02 0.02" pos="0 0 -0.1" type="box" material="LightGreyTrans" />
 									<body name="head_pitch" pos="0 5.373E-05 0.036">
 										<site name="head" pos="0 0 0" size="0.06 0.06 0.06" rgba="1 0 0 0" type="sphere" group="1" />
 										<inertial pos="0.0179937 0.000157203 -0.0107884" quat="-0.00317787 0.890883 0.0047882 0.454197" mass="0.315067" diaginertia="0.00129389 0.00105273 0.000852366" />
 										<joint name="head_pitch" pos="0 0 0" axis="0.0 1.0 0.0" range="-0.2617993877991494 0.2617993877991494" />
 										<geom pos="0.0 0.0 0.0" type="mesh" contype="0" conaffinity="0" group="1" density="0" mass="0.1" material="Black" mesh="head_pitch" />
-										<geom size="0.05 0.05 0.05" type="box" material="LightGrey" />
+										<geom size="0.05 0.05 0.05" type="box" material="LightGreyTrans" />
 										<camera name="robotview" pos="0.13 0 0.09" xyaxes="0.00 -1.000 0.000 0.9 0.00 0.6" fovy="50"/>
 									</body>
 								</body>
