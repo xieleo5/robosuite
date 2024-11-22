@@ -119,15 +119,10 @@ class GR1FixedLowerBody(GR1):
         """
         init_qpos = np.array([0.0] * 20)
         # right_arm_init = np.array([0.0, -0.1, 0.0, -1.57, 0.0, 0.0, 0.0])
-        right_arm_mu = np.array([-0.24969536, -0.37513858, 0.15333691, -1.5156459, -0.32414495, -0.08142863, -0.02886755])
-        right_arm_std = np.array([0.09999048, 0.07160844, 0.12070996, 0.1210835, 0.05889135, 0.07890889, 0.08551719]) * 0.1
-        # sample from normal distribution, but clip to be within 1 std
-        right_arm_init = np.random.normal(right_arm_mu, right_arm_std).clip(right_arm_mu - right_arm_std, right_arm_mu + right_arm_std)
+        right_arm_init = np.array([-0.24969536, -0.37513858, 0.15333691, -1.5156459, -0.32414495, -0.08142863, -0.02886755])
         init_qpos[6:13] = right_arm_init
         # left_arm_init = np.array([0.0, 0.1, 0.0, -1.57, 0.0, 0.0, 0.0])
-        left_arm_mu = np.array([-0.12581798, 0.41032902, -0.13946764, -1.52252871, 0.24324377, 0.27378396, 0.00065818])
-        left_arm_std = np.array([0.08314656, 0.06080353, 0.08943476, 0.10991941, 0.05261764, 0.09198223, 0.05479013]) * 0.1
-        left_arm_init = np.random.normal(left_arm_mu, left_arm_std).clip(left_arm_mu - left_arm_std, left_arm_mu + left_arm_std)
+        left_arm_init = np.array([-0.12581798, 0.41032902, -0.13946764, -1.52252871, 0.24324377, 0.27378396, 0.00065818])
         init_qpos[13:20] = left_arm_init
         return init_qpos
 
@@ -156,15 +151,10 @@ class GR1FloatingBody(GR1):
         """
         init_qpos = np.array([0.0] * 20)
         # right_arm_init = np.array([0.0, -0.1, 0.0, -1.57, 0.0, 0.0, 0.0])
-        right_arm_mu = np.array([-0.24969536, -0.37513858, 0.15333691, -1.5156459, -0.32414495, -0.08142863, -0.02886755])
-        right_arm_std = np.array([0.09999048, 0.07160844, 0.12070996, 0.1210835, 0.05889135, 0.07890889, 0.08551719]) * 0.1
-        # sample from normal distribution, but clip to be within 1 std
-        right_arm_init = np.random.normal(right_arm_mu, right_arm_std).clip(right_arm_mu - right_arm_std, right_arm_mu + right_arm_std)
+        right_arm_init = np.array([-0.24969536, -0.37513858, 0.15333691, -1.5156459, -0.32414495, -0.08142863, -0.02886755])
         init_qpos[6:13] = right_arm_init
         # left_arm_init = np.array([0.0, 0.1, 0.0, -1.57, 0.0, 0.0, 0.0])
-        left_arm_mu = np.array([-0.12581798, 0.41032902, -0.13946764, -1.52252871, 0.24324377, 0.27378396, 0.00065818])
-        left_arm_std = np.array([0.08314656, 0.06080353, 0.08943476, 0.10991941, 0.05261764, 0.09198223, 0.05479013]) * 0.1
-        left_arm_init = np.random.normal(left_arm_mu, left_arm_std).clip(left_arm_mu - left_arm_std, left_arm_mu + left_arm_std)
+        left_arm_init = np.array([-0.12581798, 0.41032902, -0.13946764, -1.52252871, 0.24324377, 0.27378396, 0.00065818])
         init_qpos[13:20] = left_arm_init
         return init_qpos
 
@@ -203,14 +193,9 @@ class GR1ArmsOnly(GR1):
         """
         init_qpos = np.array([0.0] * 14)
         # right_arm_init = np.array([0.0, -0.1, 0.0, -1.57, 0.0, 0.0, 0.0])
-        right_arm_mu = np.array([-0.24969536, -0.37513858, 0.15333691, -1.5156459, -0.32414495, -0.08142863, -0.02886755])
-        right_arm_std = np.array([0.09999048, 0.07160844, 0.12070996, 0.1210835, 0.05889135, 0.07890889, 0.08551719]) * 0.1
-        # sample from normal distribution, but clip to be within 1 std
-        right_arm_init = np.random.normal(right_arm_mu, right_arm_std).clip(right_arm_mu - right_arm_std, right_arm_mu + right_arm_std)
+        right_arm_init = np.array([-0.24969536, -0.37513858, 0.15333691, -1.5156459, -0.32414495, -0.08142863, -0.02886755])
         # left_arm_init = np.array([0.0, 0.1, 0.0, -1.57, 0.0, 0.0, 0.0])
-        left_arm_mu = np.array([-0.12581798, 0.41032902, -0.13946764, -1.52252871, 0.24324377, 0.27378396, 0.00065818])
-        left_arm_std = np.array([0.08314656, 0.06080353, 0.08943476, 0.10991941, 0.05261764, 0.09198223, 0.05479013]) * 0.1
-        left_arm_init = np.random.normal(left_arm_mu, left_arm_std).clip(left_arm_mu - left_arm_std, left_arm_mu + left_arm_std)
+        left_arm_init = np.array([-0.12581798, 0.41032902, -0.13946764, -1.52252871, 0.24324377, 0.27378396, 0.00065818])
         init_qpos[0:7] = right_arm_init
         init_qpos[7:14] = left_arm_init
         return init_qpos
