@@ -106,6 +106,7 @@ class JointPositionController(Controller):
         interpolator=None,
         input_type: Literal["delta", "absolute"] = "delta",
         disable_grav_comp=False,
+        stiction_threshold=None,
         **kwargs,  # does nothing; used so no error raised when dict is passed with extra terms used previously
     ):
 
@@ -175,6 +176,7 @@ class JointPositionController(Controller):
 
         # Disable gravity compensation
         self.disable_grav_comp = disable_grav_comp
+        self.stiction_threshold = np.array(stiction_threshold) if stiction_threshold is not None else None
 
         # initialize
         self.goal_qpos = None
@@ -261,10 +263,23 @@ class JointPositionController(Controller):
 
         position_error = desired_qpos - self.joint_pos
         vel_pos_error = -self.joint_vel
-        desired_torque = np.multiply(np.array(position_error), np.array(self.kp)) + np.multiply(vel_pos_error, self.kd)
+        
+        desired_torque_kp = np.multiply(np.array(position_error), np.array(self.kp)) 
+        desired_torque_kd = np.multiply(vel_pos_error, self.kd)
 
-        # Return desired torques plus gravity compensations
-        self.torques = np.dot(self.mass_matrix, desired_torque)
+        if self.stiction_threshold is None:
+            self.torques = np.dot(self.mass_matrix, desired_torque_kp + desired_torque_kd)
+        else:
+            desired_torque_kp = np.dot(self.mass_matrix, desired_torque_kp)
+
+            # if torques absolute value is less than stiction_threshold, set it to zero
+            # other wise, reduce the absolute value by stiction_threshold
+            desired_torque_kp = np.where(np.abs(desired_torque_kp) < self.stiction_threshold, 0, desired_torque_kp - 0.5 * np.sign(desired_torque_kp) * self.stiction_threshold)
+
+            # desired_torque_kp = np.where(np.abs(desired_torque_kp) < self.stiction_threshold, 0, desired_torque_kp)
+            desired_torque_kd = np.dot(self.mass_matrix, desired_torque_kd)
+            self.torques = desired_torque_kp + desired_torque_kd
+
         if not self.disable_grav_comp:
             self.torques += self.torque_compensation
 
