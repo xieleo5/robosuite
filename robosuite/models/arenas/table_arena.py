@@ -23,6 +23,7 @@ class TableArena(Arena):
         table_full_size=(0.8, 0.8, 0.05),
         table_friction=(1, 0.005, 0.0001),
         table_offset=(0, 0, 0.8),
+        table_rot=None,
         has_legs=True,
         xml="arenas/table_arena.xml",
     ):
@@ -48,6 +49,13 @@ class TableArena(Arena):
         ]
 
         self.configure_location()
+
+        self.table_rot = table_rot
+        self.configure_rotation()
+
+    def configure_rotation(self):
+        if self.table_rot is not None:
+            self.table_body.set("xyaxes", array_to_string(self.table_rot))
 
     def configure_location(self):
         """Configures correct locations for this arena"""
